@@ -5,18 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>РОСКШ — граффити и роспись стен в Краснодаре</title>
-  <meta name="description" content="Граффити, художественная роспись стен, аэрография и оформление пространств в Краснодаре и Краснодарском крае. Художник РОСКШ.">
+
+  <meta
+    name="description"
+    content="Граффити, аэрография и художественная роспись пространств в Краснодаре и Краснодарском крае. Художник РОСКШ."
+  >
 
   <style>
+
+    /* =========================
+       COLORS
+    ========================== */
+
     :root {
-      --ink: #291E24;
+      --dark: #291E24;
       --deep: #412B42;
       --purple: #754A70;
       --green: #86A88E;
       --cream: #F1ECE7;
-      --paper: #E9E2DC;
-      --line: rgba(241, 236, 231, .28);
+      --paper: #E7DED8;
+      --line-light: rgba(241,236,231,.28);
+      --line-dark: rgba(41,30,36,.28);
     }
+
+
+    /* =========================
+       RESET
+    ========================== */
 
     * {
       margin: 0;
@@ -29,10 +44,15 @@
     }
 
     body {
-      background: var(--ink);
+      background: var(--dark);
       color: var(--cream);
       font-family: Arial, Helvetica, sans-serif;
       overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
     }
 
     a {
@@ -40,333 +60,354 @@
       text-decoration: none;
     }
 
-    img {
-      width: 100%;
-      display: block;
-    }
 
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    /* ---------------- HEADER ---------------- */
+    /* =========================
+       HEADER
+    ========================== */
 
     header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 50;
+      position: relative;
+      z-index: 100;
+
+      height: 86px;
+      padding: 0 4vw;
+
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 28px 4vw;
+      align-items: center;
+
+      background: var(--dark);
+      border-bottom: 1px solid var(--line-light);
     }
 
     .logo {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 900;
       letter-spacing: -.05em;
     }
 
     nav {
       display: flex;
-      gap: 30px;
-      font-size: 12px;
+      gap: 32px;
+
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: .08em;
     }
 
     nav a {
-      position: relative;
+      transition: opacity .2s;
     }
 
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0;
-      height: 1px;
-      background: var(--green);
-      transition: .25s;
+    nav a:hover {
+      opacity: .55;
     }
 
-    nav a:hover::after {
-      width: 100%;
-    }
 
-    /* ---------------- HERO ---------------- */
+    /* =========================
+       HERO
+    ========================== */
 
     .hero {
-      min-height: 100vh;
-      position: relative;
-      padding: 125px 4vw 55px;
-      background: var(--ink);
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 430px;
-      height: 430px;
-      border-radius: 50%;
-      background: var(--purple);
-      top: -190px;
-      right: 12%;
-      opacity: .72;
+      background: var(--dark);
+      padding: 55px 4vw 70px;
     }
 
     .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr .78fr;
+      gap: 6vw;
+      align-items: center;
+
+      min-height: calc(100vh - 210px);
+    }
+
+
+    /* LEFT */
+
+    .hero-copy {
       position: relative;
       z-index: 2;
-      min-height: calc(100vh - 180px);
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 4vw;
-      align-items: center;
     }
 
-    .hero-number {
-      position: absolute;
-      right: 3.7vw;
-      top: 100px;
-      writing-mode: vertical-rl;
-      font-size: 10px;
-      letter-spacing: .24em;
-      opacity: .65;
-    }
+    .eyebrow {
+      color: var(--green);
 
-    .micro {
       font-size: 10px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .24em;
-      margin-bottom: 24px;
+
+      margin-bottom: 45px;
+    }
+
+    .hero-title {
+      font-size: clamp(54px, 7.2vw, 122px);
+      line-height: .82;
+      letter-spacing: -.075em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .hero-title .outline {
+      color: transparent;
+      -webkit-text-stroke: 1px var(--cream);
+    }
+
+    .hero-title .green {
       color: var(--green);
     }
 
-    .hero h1 {
-      font-size: clamp(100px, 16vw, 240px);
-      line-height: .72;
-      letter-spacing: -.095em;
-      font-weight: 900;
-      position: relative;
-      z-index: 4;
-    }
 
-    .hero-subtitle {
-      max-width: 520px;
-      margin-top: 48px;
+    /* DESCRIPTION */
+
+    .hero-bottom {
+      margin-top: 55px;
+      padding-top: 22px;
+
+      border-top: 1px solid var(--line-light);
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 35px;
+
+      max-width: 720px;
     }
 
-    .hero-subtitle strong {
-      font-size: 19px;
-      line-height: 1.1;
+    .artist-name {
+      font-size: 12px;
+      line-height: 1.5;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .hero-description {
+      font-size: 15px;
+      line-height: 1.55;
+      color: rgba(241,236,231,.72);
+      max-width: 430px;
+    }
+
+
+    /* CTA */
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+
+      margin-top: 35px;
+      padding: 15px 21px;
+
+      background: var(--green);
+      color: var(--dark);
+
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+
+      transition:
+        background .2s,
+        color .2s,
+        transform .2s;
+    }
+
+    .hero-cta:hover {
+      background: var(--cream);
+      transform: translateY(-2px);
+    }
+
+
+    /* HERO IMAGE */
+
+    .hero-image-area {
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-image-frame {
+      position: relative;
+      background: var(--purple);
+      padding: 12px;
+    }
+
+    .hero-image-frame img {
+      width: 100%;
+      height: min(70vh, 760px);
+
+      object-fit: cover;
+      object-position: center 45%;
+
+      background: var(--deep);
+    }
+
+
+    /* PROJECT LABEL */
+
+    .image-caption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 13px 2px 0;
+
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+
+      color: rgba(241,236,231,.72);
+    }
+
+
+    /* NUMBER — intentionally outside image */
+
+    .project-number {
+      position: absolute;
+      top: -29px;
+      right: -2px;
+
+      color: var(--green);
+
+      font-size: 10px;
+      letter-spacing: .18em;
       text-transform: uppercase;
     }
 
-    .hero-subtitle p {
-      font-size: 13px;
-      line-height: 1.5;
-      opacity: .7;
-    }
 
-    .hero-art {
-      position: relative;
-      align-self: end;
-      padding-bottom: 35px;
-    }
+    /* =========================
+       STRIP
+    ========================== */
 
-    .hero-art img {
-      height: 67vh;
-      object-fit: cover;
-      filter: saturate(.9);
-    }
+    .strip {
+      overflow: hidden;
 
-    .hero-art-label {
-      position: absolute;
-      left: -30px;
-      bottom: 5px;
       background: var(--green);
-      color: var(--ink);
-      padding: 15px 18px;
+      color: var(--dark);
+
+      border-top: 1px solid var(--dark);
+      border-bottom: 1px solid var(--dark);
+    }
+
+    .strip-track {
+      display: flex;
+      width: max-content;
+
+      animation: ticker 28s linear infinite;
+    }
+
+    .strip span {
+      white-space: nowrap;
+
+      padding: 14px 25px;
+
       font-size: 10px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .16em;
     }
 
-    .hero-circle {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      border: 1px solid var(--green);
-      border-radius: 50%;
-      left: -50px;
-      top: 10%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      text-align: center;
-      line-height: 1.4;
-      letter-spacing: .1em;
-      transform: rotate(-15deg);
-    }
-
-    /* ---------------- TOOL DRAWINGS ---------------- */
-
-    .spray-can {
-      position: absolute;
-      width: 90px;
-      height: 185px;
-      right: 4vw;
-      bottom: 12px;
-      opacity: .65;
-      transform: rotate(12deg);
-    }
-
-    .can-cap {
-      width: 38px;
-      height: 22px;
-      border: 1px solid var(--green);
-      margin: auto;
-      border-radius: 4px 4px 0 0;
-    }
-
-    .can-nozzle {
-      width: 15px;
-      height: 8px;
-      background: var(--green);
-      margin: auto;
-    }
-
-    .can-body {
-      height: 150px;
-      border: 1px solid var(--green);
-      border-radius: 8px 8px 13px 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .can-body span {
-      transform: rotate(90deg);
-      font-size: 9px;
-      letter-spacing: .2em;
-      white-space: nowrap;
-    }
-
-    /* ---------------- MARQUEE ---------------- */
-
-    .ticker {
-      overflow: hidden;
-      background: var(--green);
-      color: var(--ink);
-      border-top: 1px solid var(--ink);
-      border-bottom: 1px solid var(--ink);
-    }
-
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: ticker 25s linear infinite;
-    }
-
-    .ticker span {
-      display: block;
-      padding: 14px 28px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      white-space: nowrap;
-    }
-
     @keyframes ticker {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+
     }
 
-    /* ---------------- INTRO ---------------- */
+
+    /* =========================
+       INTRO
+    ========================== */
 
     .intro {
-      padding: 130px 4vw 145px;
       background: var(--cream);
-      color: var(--ink);
+      color: var(--dark);
+
+      padding: 125px 4vw 135px;
+
       display: grid;
-      grid-template-columns: .6fr 1.4fr;
-      gap: 8vw;
-      position: relative;
+      grid-template-columns: .45fr 1.55fr;
+      gap: 6vw;
     }
 
-    .section-tag {
-      font-size: 10px;
+    .section-label {
+      font-size: 9px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .2em;
     }
 
     .intro h2 {
-      font-size: clamp(42px, 6vw, 92px);
-      line-height: .95;
-      letter-spacing: -.06em;
-      max-width: 1000px;
+      max-width: 1100px;
+
+      font-size: clamp(42px, 6.5vw, 102px);
+      line-height: .94;
+      letter-spacing: -.065em;
     }
 
     .intro h2 span {
       color: var(--purple);
     }
 
-    .intro-copy {
-      grid-column: 2;
+    .intro-text {
+      margin-top: 55px;
+      max-width: 820px;
+
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5vw;
-      margin-top: 55px;
-      max-width: 850px;
+      gap: 60px;
     }
 
-    .intro-copy p {
+    .intro-text p {
       font-size: 15px;
       line-height: 1.65;
     }
 
-    /* ---------------- WORKS ---------------- */
+
+    /* =========================
+       WORKS
+    ========================== */
 
     .works {
-      padding: 120px 4vw;
       background: var(--deep);
+      padding: 120px 4vw 140px;
     }
 
-    .section-head {
+    .works-heading {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 70px;
-      border-bottom: 1px solid var(--line);
+
       padding-bottom: 20px;
+      margin-bottom: 55px;
+
+      border-bottom: 1px solid var(--line-light);
     }
 
-    .section-head h2 {
-      font-size: clamp(55px, 9vw, 145px);
-      line-height: .78;
+    .works-heading h2 {
+      font-size: clamp(60px, 10vw, 155px);
+      line-height: .75;
       letter-spacing: -.075em;
     }
 
-    .section-head p {
+    .works-heading p {
       max-width: 250px;
-      font-size: 11px;
+
+      font-size: 10px;
       line-height: 1.5;
       text-transform: uppercase;
-      letter-spacing: .12em;
-      opacity: .65;
+      letter-spacing: .13em;
+
+      color: rgba(241,236,231,.6);
     }
+
+
+    /* GALLERY */
 
     .gallery {
       display: grid;
@@ -377,286 +418,246 @@
     .work {
       position: relative;
       overflow: hidden;
-      cursor: pointer;
+      background: var(--dark);
     }
 
     .work img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
-      transition: transform .65s cubic-bezier(.2,.7,.2,1);
+
+      transition: transform .5s ease;
     }
 
     .work:hover img {
       transform: scale(1.025);
     }
 
-    .work-overlay {
+    .work-caption {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(41,30,36,.85),
-        transparent 45%
-      );
-      opacity: 0;
-      transition: .3s;
-    }
+      left: 0;
+      right: 0;
+      bottom: 0;
 
-    .work:hover .work-overlay {
-      opacity: 1;
-    }
+      padding: 50px 18px 17px;
 
-    .work-info {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
       display: flex;
       justify-content: space-between;
-      align-items: end;
-      z-index: 2;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: .3s;
-    }
+      align-items: flex-end;
 
-    .work:hover .work-info {
-      opacity: 1;
-      transform: translateY(0);
-    }
+      background:
+        linear-gradient(
+          transparent,
+          rgba(41,30,36,.88)
+        );
 
-    .work-info strong {
-      font-size: 13px;
-      text-transform: uppercase;
-    }
-
-    .work-info span {
       font-size: 9px;
-      letter-spacing: .15em;
       text-transform: uppercase;
+      letter-spacing: .12em;
     }
+
+    .work-caption strong {
+      font-size: 11px;
+    }
+
 
     .work-1 {
       grid-column: span 7;
-      height: 650px;
+      height: 620px;
     }
 
     .work-2 {
       grid-column: span 5;
       height: 470px;
-      margin-top: 120px;
+      margin-top: 100px;
     }
 
     .work-3 {
       grid-column: 2 / span 4;
-      height: 560px;
-      margin-top: 50px;
+      height: 550px;
+      margin-top: 40px;
     }
 
     .work-4 {
       grid-column: 7 / span 6;
-      height: 720px;
+      height: 690px;
     }
 
     .work-5 {
       grid-column: span 8;
-      height: 580px;
-      margin-top: 30px;
+      height: 570px;
+      margin-top: 35px;
     }
 
     .work-6 {
       grid-column: span 4;
       height: 440px;
-      margin-top: 120px;
+      margin-top: 110px;
     }
 
     .work-7 {
-      grid-column: 1 / span 5;
-      height: 570px;
+      grid-column: span 5;
+      height: 550px;
     }
 
     .work-8 {
       grid-column: 7 / span 6;
       height: 500px;
-      margin-top: 90px;
+      margin-top: 80px;
     }
 
-    /* ---------------- SERVICES ---------------- */
+
+    /* =========================
+       SERVICES
+    ========================== */
 
     .services {
       background: var(--green);
-      color: var(--ink);
-      padding: 125px 4vw;
-      position: relative;
-      overflow: hidden;
+      color: var(--dark);
+
+      padding: 120px 4vw 130px;
     }
 
-    .services-title {
-      font-size: clamp(65px, 12vw, 180px);
+    .services h2 {
+      margin: 35px 0 75px;
+
+      font-size: clamp(60px, 10vw, 150px);
       line-height: .78;
-      letter-spacing: -.08em;
-      margin-bottom: 90px;
+      letter-spacing: -.075em;
     }
 
     .service {
       display: grid;
-      grid-template-columns: 80px 1fr 1fr;
+      grid-template-columns: 70px 1fr 1fr;
       gap: 30px;
-      padding: 27px 0;
-      border-top: 1px solid rgba(41,30,36,.38);
       align-items: center;
-      position: relative;
-      z-index: 2;
+
+      padding: 28px 0;
+
+      border-top: 1px solid var(--line-dark);
     }
 
-    .service:last-of-type {
-      border-bottom: 1px solid rgba(41,30,36,.38);
+    .service:last-child {
+      border-bottom: 1px solid var(--line-dark);
     }
 
     .service-number {
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: .15em;
     }
 
     .service h3 {
-      font-size: clamp(25px, 3.2vw, 48px);
+      font-size: clamp(23px, 3vw, 46px);
+      line-height: 1;
       letter-spacing: -.04em;
       text-transform: uppercase;
     }
 
     .service p {
       max-width: 460px;
+
       font-size: 13px;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
-    .airbrush-art {
-      position: absolute;
-      right: -100px;
-      top: 70px;
-      width: 470px;
-      height: 190px;
-      transform: rotate(-8deg);
-      opacity: .12;
-    }
 
-    .airbrush-body {
-      position: absolute;
-      width: 330px;
-      height: 30px;
-      border: 4px solid var(--ink);
-      border-radius: 30px;
-      top: 80px;
-    }
-
-    .airbrush-tip {
-      position: absolute;
-      left: -110px;
-      top: 91px;
-      width: 115px;
-      height: 8px;
-      background: var(--ink);
-    }
-
-    .airbrush-cup {
-      position: absolute;
-      width: 75px;
-      height: 60px;
-      border: 4px solid var(--ink);
-      border-radius: 0 0 40px 40px;
-      left: 100px;
-      top: 24px;
-    }
-
-    .airbrush-trigger {
-      position: absolute;
-      width: 13px;
-      height: 55px;
-      background: var(--ink);
-      left: 180px;
-      top: 35px;
-    }
-
-    /* ---------------- ABOUT ---------------- */
+    /* =========================
+       ABOUT
+    ========================== */
 
     .about {
-      padding: 140px 4vw;
-      background: var(--ink);
+      background: var(--dark);
+      padding: 130px 4vw;
     }
 
-    .about-top {
+    .about-grid {
       display: grid;
-      grid-template-columns: .7fr 1.3fr;
-      gap: 8vw;
+      grid-template-columns: .45fr 1.55fr;
+      gap: 6vw;
     }
 
     .about h2 {
-      font-size: clamp(48px, 7vw, 105px);
+      font-size: clamp(45px, 7vw, 105px);
       line-height: .9;
       letter-spacing: -.065em;
-      margin-bottom: 45px;
+
+      max-width: 1000px;
     }
 
-    .about-main p {
-      font-size: 17px;
-      line-height: 1.65;
-      max-width: 700px;
+    .about-text {
+      max-width: 720px;
+      margin-top: 45px;
+
+      font-size: 16px;
+      line-height: 1.7;
+
+      color: rgba(241,236,231,.78);
     }
+
+
+    /* FACTS */
 
     .facts {
       margin-top: 85px;
+
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+
+      border-top: 1px solid var(--line-light);
+      border-bottom: 1px solid var(--line-light);
     }
 
     .fact {
-      padding: 25px 20px 25px 0;
-      border-right: 1px solid var(--line);
+      padding: 25px 20px;
+      border-right: 1px solid var(--line-light);
+    }
+
+    .fact:first-child {
+      padding-left: 0;
     }
 
     .fact:last-child {
-      border-right: 0;
-      padding-left: 20px;
-    }
-
-    .fact + .fact {
-      padding-left: 20px;
+      border-right: none;
     }
 
     .fact span {
       display: block;
+      margin-bottom: 10px;
+
       font-size: 9px;
       text-transform: uppercase;
-      letter-spacing: .18em;
-      opacity: .5;
-      margin-bottom: 11px;
+      letter-spacing: .16em;
+
+      color: rgba(241,236,231,.45);
     }
 
     .fact strong {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
     }
 
-    /* ---------------- PROTECTION ---------------- */
+
+    /* =========================
+       PROTECTION
+    ========================== */
 
     .protection {
       background: var(--purple);
+
       padding: 120px 4vw;
-      color: var(--cream);
+
       display: grid;
-      grid-template-columns: 1.3fr .7fr;
+      grid-template-columns: 1.25fr .75fr;
       gap: 8vw;
-      position: relative;
     }
 
     .protection h2 {
-      font-size: clamp(45px, 6vw, 92px);
+      margin-top: 35px;
+
+      font-size: clamp(43px, 6vw, 90px);
       line-height: .94;
       letter-spacing: -.06em;
-      max-width: 900px;
     }
 
     .protection-copy {
@@ -666,48 +667,49 @@
     .protection-copy p {
       font-size: 15px;
       line-height: 1.65;
+
       margin-bottom: 30px;
     }
 
-    .protection-list {
+    .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
-    .protection-list span {
-      border: 1px solid rgba(241,236,231,.5);
-      border-radius: 100px;
+    .tags span {
       padding: 9px 13px;
+
+      border: 1px solid rgba(241,236,231,.55);
+      border-radius: 100px;
+
       font-size: 9px;
-      letter-spacing: .12em;
       text-transform: uppercase;
+      letter-spacing: .1em;
     }
 
-    /* ---------------- CONTACT ---------------- */
+
+    /* =========================
+       CONTACT
+    ========================== */
 
     .contact {
-      min-height: 85vh;
       background: var(--cream);
-      color: var(--ink);
-      padding: 110px 4vw 35px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-    }
+      color: var(--dark);
 
-    .contact-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 50px;
+      min-height: 80vh;
+
+      padding: 110px 4vw 80px;
     }
 
     .contact h2 {
-      font-size: clamp(65px, 11vw, 170px);
+      margin-top: 40px;
+
+      max-width: 1200px;
+
+      font-size: clamp(65px, 11vw, 165px);
       line-height: .79;
-      letter-spacing: -.085em;
-      max-width: 1150px;
+      letter-spacing: -.08em;
     }
 
     .contact h2 span {
@@ -715,55 +717,62 @@
     }
 
     .contact-links {
-      margin-top: 70px;
+      margin-top: 65px;
+
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
 
     .contact-links a {
-      border: 1px solid var(--ink);
+      padding: 15px 22px;
+
+      border: 1px solid var(--dark);
       border-radius: 100px;
-      padding: 16px 24px;
-      font-size: 11px;
+
+      font-size: 10px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .1em;
-      transition: .25s;
+
+      transition: .2s;
     }
 
     .contact-links a:hover {
-      background: var(--ink);
+      background: var(--dark);
       color: var(--cream);
     }
 
-    .contact-word {
-      font-size: clamp(110px, 21vw, 330px);
-      line-height: .7;
-      font-weight: 900;
-      letter-spacing: -.1em;
-      color: var(--green);
-      white-space: nowrap;
-      transform: translateY(20%);
-      user-select: none;
-    }
+
+    /* =========================
+       FOOTER
+    ========================== */
 
     footer {
-      background: var(--ink);
-      color: var(--cream);
+      padding: 25px 4vw;
+
       display: flex;
       justify-content: space-between;
-      padding: 25px 4vw;
+
+      background: var(--dark);
+
       font-size: 9px;
       text-transform: uppercase;
       letter-spacing: .14em;
     }
 
-    /* ---------------- REVEAL ---------------- */
+
+    /* =========================
+       ANIMATION
+    ========================== */
 
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .8s ease, transform .8s ease;
+      transform: translateY(24px);
+
+      transition:
+        opacity .7s ease,
+        transform .7s ease;
     }
 
     .reveal.visible {
@@ -771,93 +780,116 @@
       transform: translateY(0);
     }
 
-    /* ---------------- MOBILE ---------------- */
+
+    /* =========================
+       MOBILE
+    ========================== */
 
     @media (max-width: 760px) {
 
       header {
-        padding: 22px 20px;
+        height: 70px;
+        padding: 0 20px;
       }
 
       nav {
-        gap: 15px;
-        font-size: 9px;
+        gap: 14px;
+        font-size: 8px;
       }
 
       nav a:nth-child(3) {
         display: none;
       }
 
+
+      /* HERO */
+
       .hero {
-        padding: 115px 20px 50px;
-        min-height: auto;
+        padding: 55px 20px 60px;
       }
 
       .hero-grid {
-        display: block;
+        display: flex;
+        flex-direction: column;
+
         min-height: auto;
+        gap: 55px;
       }
 
-      .hero h1 {
-        font-size: 28vw;
-        margin-left: -2vw;
+      .hero-copy {
+        width: 100%;
       }
 
-      .hero-subtitle {
-        margin-top: 35px;
+      .eyebrow {
+        margin-bottom: 30px;
       }
 
-      .hero-art {
-        margin-top: 55px;
-        width: 88%;
-        margin-left: auto;
+      .hero-title {
+        font-size: 15vw;
+        line-height: .87;
       }
 
-      .hero-art img {
-        height: 58vh;
+      .hero-bottom {
+        margin-top: 40px;
+
+        grid-template-columns: 1fr;
+        gap: 18px;
       }
 
-      .hero-circle {
-        width: 75px;
-        height: 75px;
-        left: -35px;
+      .hero-image-area {
+        width: 92%;
+        align-self: flex-end;
       }
 
-      .spray-can {
-        display: none;
+      .hero-image-frame {
+        padding: 8px;
       }
 
-      .hero-number {
-        display: none;
+      .hero-image-frame img {
+        height: auto;
+        max-height: none;
+        object-fit: contain;
       }
+
+      .project-number {
+        top: -25px;
+      }
+
+
+      /* INTRO */
 
       .intro {
-        padding: 90px 20px;
         display: block;
+
+        padding: 90px 20px;
       }
 
       .intro h2 {
         margin-top: 35px;
       }
 
-      .intro-copy {
+      .intro-text {
         display: block;
+
         margin-top: 40px;
       }
 
-      .intro-copy p + p {
+      .intro-text p + p {
         margin-top: 25px;
       }
+
+
+      /* WORKS */
 
       .works {
         padding: 90px 20px;
       }
 
-      .section-head {
+      .works-heading {
         display: block;
       }
 
-      .section-head p {
+      .works-heading p {
         margin-top: 30px;
       }
 
@@ -866,58 +898,53 @@
       }
 
       .work {
+        width: 100%;
         height: auto !important;
-        margin: 0 0 45px !important;
+
+        margin: 0 0 30px !important;
       }
 
       .work img {
+        width: 100%;
         height: auto;
-        max-height: 72vh;
-        object-fit: cover;
+
+        max-height: none;
+
+        object-fit: contain;
       }
 
-      .work-overlay {
-        opacity: 1;
-        background: linear-gradient(to top, rgba(41,30,36,.72), transparent 35%);
-      }
 
-      .work-info {
-        opacity: 1;
-        transform: none;
-      }
+      /* SERVICES */
 
       .services {
         padding: 90px 20px;
       }
 
-      .services-title {
+      .services h2 {
         margin-bottom: 55px;
       }
 
       .service {
-        grid-template-columns: 45px 1fr;
-        gap: 15px;
+        grid-template-columns: 42px 1fr;
+        gap: 14px;
       }
 
       .service p {
         grid-column: 2;
-        margin-top: -5px;
       }
 
-      .airbrush-art {
-        width: 300px;
-        right: -180px;
-      }
+
+      /* ABOUT */
 
       .about {
         padding: 90px 20px;
       }
 
-      .about-top {
+      .about-grid {
         display: block;
       }
 
-      .about-main {
+      .about h2 {
         margin-top: 35px;
       }
 
@@ -926,18 +953,20 @@
       }
 
       .fact,
-      .fact + .fact,
-      .fact:last-child {
+      .fact:first-child {
         padding: 20px 12px;
-        border-right: 1px solid var(--line);
       }
 
       .fact:nth-child(2n) {
-        border-right: 0;
+        border-right: none;
       }
+
+
+      /* PROTECTION */
 
       .protection {
         display: block;
+
         padding: 90px 20px;
       }
 
@@ -945,32 +974,39 @@
         margin-top: 45px;
       }
 
+
+      /* CONTACT */
+
       .contact {
-        min-height: 75vh;
-        padding: 90px 20px 20px;
+        padding: 90px 20px;
+        min-height: auto;
       }
 
-      .contact-top {
-        display: block;
-      }
-
-      .contact-links {
-        margin-top: 50px;
-      }
 
       footer {
-        padding: 22px 20px;
         display: block;
+        padding: 22px 20px;
         line-height: 1.8;
       }
+
     }
+
   </style>
 </head>
 
+
 <body>
 
+
+<!-- =========================
+     HEADER
+========================== -->
+
 <header>
-  <a href="#" class="logo">РОСКШ</a>
+
+  <a href="#" class="logo">
+    РОСКШ
+  </a>
 
   <nav>
     <a href="#works">Работы</a>
@@ -978,419 +1014,694 @@
     <a href="#about">Обо мне</a>
     <a href="#contact">Контакты</a>
   </nav>
+
 </header>
 
 
-<!-- HERO -->
+
+<!-- =========================
+     HERO
+========================== -->
 
 <section class="hero">
 
-  <div class="hero-number">
-    ROSKSH / KRASNODAR / 2026
-  </div>
-
   <div class="hero-grid">
 
-    <div>
-      <div class="micro">Graffiti / Airbrush / Mural art</div>
 
-      <h1>РОСКШ</h1>
+    <!-- LEFT -->
 
-      <div class="hero-subtitle">
-        <strong>
-          Роспись<br>
-          пространств
-        </strong>
+    <div class="hero-copy">
 
-        <p>
-          От идеи и эскиза до готовой работы.
-          Краснодар и Краснодарский край.
-        </p>
-      </div>
-    </div>
-
-    <div class="hero-art">
-
-      <div class="hero-circle">
-        ART<br>ON<br>WALLS
+      <div class="eyebrow">
+        ROSKSH / KRASNODAR
       </div>
 
-      <img
-        src="photo_2026-09-29_11-46-26.jpg"
-        alt="Роспись стены художником РОСКШ"
-      >
 
-      <div class="hero-art-label">
-        Mixed technique / 001
+      <h1 class="hero-title">
+
+        ГРАФФИТИ<br>
+
+        <span class="outline">
+          АЭРОГРАФИЯ
+        </span><br>
+
+        <span class="green">
+          РОСПИСЬ
+        </span>
+
+      </h1>
+
+
+      <div class="hero-bottom">
+
+        <div class="artist-name">
+          Макс / РОСКШ<br>
+          художник
+        </div>
+
+        <div class="hero-description">
+          Художественная роспись частных
+          и&nbsp;коммерческих пространств.
+          От&nbsp;идеи и&nbsp;эскиза
+          до&nbsp;готовой работы.
+          Краснодар и&nbsp;Краснодарский край.
+        </div>
+
       </div>
 
-    </div>
-
-  </div>
-
-  <div class="spray-can">
-    <div class="can-cap"></div>
-    <div class="can-nozzle"></div>
-    <div class="can-body">
-      <span>SPRAY / ROSKSH</span>
-    </div>
-  </div>
-
-</section>
-
-
-<!-- TICKER -->
-
-<div class="ticker">
-  <div class="ticker-track">
-
-    <span>Graffiti / Airbrush / Mural / Space design / Краснодар /</span>
-    <span>Graffiti / Airbrush / Mural / Space design / Краснодар /</span>
-    <span>Graffiti / Airbrush / Mural / Space design / Краснодар /</span>
-    <span>Graffiti / Airbrush / Mural / Space design / Краснодар /</span>
-
-  </div>
-</div>
-
-
-<!-- INTRO -->
-
-<section class="intro">
-
-  <div class="section-tag">
-    00 / Artist
-  </div>
-
-  <div>
-    <h2 class="reveal">
-      Я Макс — граффити-художник и
-      <span>дизайнер пространств.</span>
-    </h2>
-
-    <div class="intro-copy reveal">
-
-      <p>
-        Работаю в смешанных техниках, сочетая
-        аэрографию и классическое граффити.
-        Рисую на разных поверхностях и адаптирую
-        технику под конкретную задачу.
-      </p>
-
-      <p>
-        От небольшой стены в интерьере до
-        коммерческого пространства. Беру проект
-        от идеи и эскиза до реализации.
-      </p>
-
-    </div>
-  </div>
-
-</section>
-
-
-<!-- WORKS -->
-
-<section class="works" id="works">
-
-  <div class="section-head reveal">
-
-    <h2>РАБОТЫ</h2>
-
-    <p>
-      Selected works<br>
-      Краснодар / 2026
-    </p>
-
-  </div>
-
-
-  <div class="gallery">
-
-    <div class="work work-1 reveal">
-      <img src="photo_2026-09-29_11-46-26.jpg" alt="Работа РОСКШ">
-      <div class="work-overlay"></div>
-      <div class="work-info">
-        <strong>Project 001</strong>
-        <span>Mixed media ↗</span>
-      </div>
-    </div>
-
-    <div class="work work-2 reveal">
-      <img src="photo_2026-09-11_10-17-38.jpg" alt="Работа РОСКШ">
-      <div class="work-overlay"></div>
-      <div class="work-info">
-        <strong>Project 002</strong>
-        <span>Mural ↗</span>
-      </div>
-    </div>
-
-    <div class="work work-3 reveal">
-      <img src="photo_2026-09-17_12-28-47.jpg" alt="Работа РОСКШ">
-      <div class="work-overlay"></div>
-      <div class="work-info">
-        <strong>Project 003</strong>
-        <span>Airbrush ↗</span>
-      </div>
-    </div>
-
-    <div class="work work-4 reveal">
-      <img src="photo_2026-10-07_16-08-55.jpg" alt="Работа РОСКШ">
-      <div class="work-overlay"></div>
-      <div class="work-info">
-        <strong>Project 004</strong>
-        <span>Interior ↗</span>
-      </div>
-    </div>
-
-    <div class="work work-5 reveal">
-      <img src="photo_2026-09-20_16-38-27.jpg" alt="Работа РОСКШ">
-      <div class="work-overlay"></div>
-      <div class="work-info">
-        <strong>Project 005</strong>
-        <span>Graffiti ↗</span>
-      </div>
-    </div>
-
-    <div class="work work-6 reveal">
-      <img src="photo_2026-09-01_16-37-27.jpg" alt="Работа РОСКШ">
-      <div class="work-overlay"></div>
-      <div class="work-info">
-        <strong>Project 006</strong>
-        <span>Wall art ↗</span>
-      </div>
-    </div>
-
-    <div class="work work-7 reveal">
-      <img src="photo_2026-05-29_14-36-50.jpg" alt="Работа РОСКШ">
-      <div class="work-overlay"></div>
-      <div class="work-info">
-        <strong>Project 007</strong>
-        <span>Commercial ↗</span>
-      </div>
-    </div>
-
-    <div class="work work-8 reveal">
-      <img src="photo_2026-05-05_23-56-04.jpg" alt="Работа РОСКШ">
-      <div class="work-overlay"></div>
-      <div class="work-info">
-        <strong>Project 008</strong>
-        <span>Art wall ↗</span>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- SERVICES -->
-
-<section class="services" id="services">
-
-  <div class="airbrush-art">
-    <div class="airbrush-body"></div>
-    <div class="airbrush-tip"></div>
-    <div class="airbrush-cup"></div>
-    <div class="airbrush-trigger"></div>
-  </div>
-
-  <div class="section-tag">02 / Services</div>
-
-  <h2 class="services-title reveal">
-    ЧТО Я<br>ДЕЛАЮ
-  </h2>
-
-
-  <div class="service reveal">
-    <span class="service-number">01</span>
-    <h3>Роспись стен</h3>
-    <p>
-      Художественное оформление жилых и коммерческих
-      пространств под конкретную задачу и интерьер.
-    </p>
-  </div>
-
-  <div class="service reveal">
-    <span class="service-number">02</span>
-    <h3>Граффити / аэрография</h3>
-    <p>
-      Работаю в смешанных техниках — от классического
-      граффити до детализированной аэрографии.
-    </p>
-  </div>
-
-  <div class="service reveal">
-    <span class="service-number">03</span>
-    <h3>Работа под ключ</h3>
-    <p>
-      Идея, эскиз, подбор материалов, подготовка
-      поверхности и реализация проекта.
-    </p>
-  </div>
-
-  <div class="service reveal">
-    <span class="service-number">04</span>
-    <h3>Мастер-классы</h3>
-    <p>
-      Знакомство с культурой граффити и создание
-      собственной работы. Для взрослых и детей.
-    </p>
-  </div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section class="about" id="about">
-
-  <div class="about-top">
-
-    <div class="section-tag">
-      03 / About
-    </div>
-
-    <div class="about-main">
-
-      <h2 class="reveal">
-        НЕ ПРОСТО<br>
-        КРАСКА НА СТЕНЕ.
-      </h2>
-
-      <p class="reveal">
-        Я глубоко погружён в технологические процессы
-        нанесения краски и могу подобрать подходящую
-        технику практически для любой поверхности.
-        Для меня важно не только создать изображение,
-        но и сделать так, чтобы оно органично работало
-        внутри пространства.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <div class="facts reveal">
-
-    <div class="fact">
-      <span>География</span>
-      <strong>Краснодар и край</strong>
-    </div>
-
-    <div class="fact">
-      <span>Техники</span>
-      <strong>Граффити + аэрография</strong>
-    </div>
-
-    <div class="fact">
-      <span>Формат</span>
-      <strong>Работа под ключ</strong>
-    </div>
-
-    <div class="fact">
-      <span>Проекты</span>
-      <strong>Частные + коммерческие</strong>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- PROTECTION -->
-
-<section class="protection">
-
-  <div>
-
-    <div class="section-tag">
-      04 / Technology
-    </div>
-
-    <h2 class="reveal" style="margin-top:35px;">
-      РАБОТА ДОЛЖНА
-      ОСТАВАТЬСЯ ТАКОЙ,
-      КАКОЙ БЫЛА
-      В ПЕРВЫЙ ДЕНЬ.
-    </h2>
-
-  </div>
-
-
-  <div class="protection-copy reveal">
-
-    <p>
-      Готовую работу можно дополнительно покрыть
-      специализированным защитным лаком. Он помогает
-      сохранить цвет и защищает поверхность от
-      загрязнений, сколов и выцветания.
-    </p>
-
-    <div class="protection-list">
-      <span>Защита цвета</span>
-      <span>От загрязнений</span>
-      <span>От сколов</span>
-      <span>Долговечность</span>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section class="contact" id="contact">
-
-  <div>
-
-    <div class="section-tag">
-      05 / Contact
-    </div>
-
-    <h2 class="reveal" style="margin-top:45px;">
-      ЕСТЬ СТЕНА?<br>
-      <span>ЕСТЬ ИДЕЯ?</span><br>
-      СДЕЛАЕМ.
-    </h2>
-
-    <div class="contact-links reveal">
 
       <a
+        class="hero-cta"
         href="https://t.me/rosksh"
         target="_blank"
         rel="noopener"
       >
-        Telegram ↗
-      </a>
-
-      <a
-        href="https://vk.ru/designeonthewalls"
-        target="_blank"
-        rel="noopener"
-      >
-        VK ↗
-      </a>
-
-      <a href="tel:+79996384827">
-        +7 999 638-48-27
+        Обсудить проект
+        <span>↗</span>
       </a>
 
     </div>
 
-  </div>
 
-  <div class="contact-word">
-    РОСКШ
+
+    <!-- RIGHT -->
+
+    <div class="hero-image-area">
+
+      <div class="project-number">
+        Selected work / 001
+      </div>
+
+
+      <div class="hero-image-frame">
+
+        <img
+          src="photo_2026-10-07_16-08-55.jpg"
+          alt="Роспись стены художника РОСКШ"
+        >
+
+      </div>
+
+
+      <div class="image-caption">
+
+        <span>
+          Graffiti + Airbrush
+        </span>
+
+        <span>
+          ROSKSH
+        </span>
+
+      </div>
+
+    </div>
+
+
   </div>
 
 </section>
 
 
+
+<!-- =========================
+     MOVING STRIP
+========================== -->
+
+<div class="strip">
+
+  <div class="strip-track">
+
+    <span>
+      Graffiti / Airbrush / Mural art / Краснодар /
+    </span>
+
+    <span>
+      Graffiti / Airbrush / Mural art / Краснодар /
+    </span>
+
+    <span>
+      Graffiti / Airbrush / Mural art / Краснодар /
+    </span>
+
+    <span>
+      Graffiti / Airbrush / Mural art / Краснодар /
+    </span>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================
+     INTRO
+========================== -->
+
+<section class="intro">
+
+  <div class="section-label">
+    01 / Artist
+  </div>
+
+
+  <div>
+
+    <h2 class="reveal">
+
+      Я&nbsp;Макс — граффити-художник
+      и&nbsp;<span>дизайнер пространств.</span>
+
+    </h2>
+
+
+    <div class="intro-text reveal">
+
+      <p>
+        Работаю в&nbsp;смешанных техниках,
+        сочетая аэрографию и&nbsp;классическое
+        граффити. Подбираю технику
+        под&nbsp;поверхность, пространство
+        и&nbsp;задачу.
+      </p>
+
+      <p>
+        Рисую практически под&nbsp;любой бюджет:
+        от&nbsp;небольшой стены в&nbsp;интерьере
+        до&nbsp;оформления коммерческого пространства.
+        Проект можно реализовать полностью
+        под&nbsp;ключ.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     WORKS
+========================== -->
+
+<section class="works" id="works">
+
+
+  <div class="works-heading reveal">
+
+    <h2>
+      РАБОТЫ
+    </h2>
+
+    <p>
+      Selected works<br>
+      Graffiti / Airbrush<br>
+      Krasnodar
+    </p>
+
+  </div>
+
+
+
+  <div class="gallery">
+
+
+    <div class="work work-1 reveal">
+
+      <img
+        src="photo_2026-10-07_16-08-55.jpg"
+        alt="Роспись стены РОСКШ"
+      >
+
+      <div class="work-caption">
+        <strong>Project 001</strong>
+        <span>Airbrush ↗</span>
+      </div>
+
+    </div>
+
+
+
+    <div class="work work-2 reveal">
+
+      <img
+        src="photo_2026-09-29_11-46-26.jpg"
+        alt="Роспись стены РОСКШ"
+      >
+
+      <div class="work-caption">
+        <strong>Project 002</strong>
+        <span>Mixed media ↗</span>
+      </div>
+
+    </div>
+
+
+
+    <div class="work work-3 reveal">
+
+      <img
+        src="photo_2026-09-11_10-17-38.jpg"
+        alt="Роспись стены РОСКШ"
+      >
+
+      <div class="work-caption">
+        <strong>Project 003</strong>
+        <span>Mural ↗</span>
+      </div>
+
+    </div>
+
+
+
+    <div class="work work-4 reveal">
+
+      <img
+        src="photo_2026-09-17_12-28-47.jpg"
+        alt="Роспись стены РОСКШ"
+      >
+
+      <div class="work-caption">
+        <strong>Project 004</strong>
+        <span>Wall art ↗</span>
+      </div>
+
+    </div>
+
+
+
+    <div class="work work-5 reveal">
+
+      <img
+        src="photo_2026-09-20_16-38-27.jpg"
+        alt="Роспись стены РОСКШ"
+      >
+
+      <div class="work-caption">
+        <strong>Project 005</strong>
+        <span>Graffiti ↗</span>
+      </div>
+
+    </div>
+
+
+
+    <div class="work work-6 reveal">
+
+      <img
+        src="photo_2026-09-01_16-37-27.jpg"
+        alt="Роспись стены РОСКШ"
+      >
+
+      <div class="work-caption">
+        <strong>Project 006</strong>
+        <span>Interior ↗</span>
+      </div>
+
+    </div>
+
+
+
+    <div class="work work-7 reveal">
+
+      <img
+        src="photo_2026-05-29_14-36-50.jpg"
+        alt="Роспись стены РОСКШ"
+      >
+
+      <div class="work-caption">
+        <strong>Project 007</strong>
+        <span>Mural ↗</span>
+      </div>
+
+    </div>
+
+
+
+    <div class="work work-8 reveal">
+
+      <img
+        src="photo_2026-05-05_23-56-04.jpg"
+        alt="Роспись стены РОСКШ"
+      >
+
+      <div class="work-caption">
+        <strong>Project 008</strong>
+        <span>Wall art ↗</span>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     SERVICES
+========================== -->
+
+<section class="services" id="services">
+
+  <div class="section-label">
+    02 / Services
+  </div>
+
+
+  <h2 class="reveal">
+    ЧТО Я<br>
+    ДЕЛАЮ
+  </h2>
+
+
+
+  <div class="service reveal">
+
+    <div class="service-number">
+      01
+    </div>
+
+    <h3>
+      Роспись стен
+    </h3>
+
+    <p>
+      Художественное оформление жилых
+      и&nbsp;коммерческих пространств
+      под&nbsp;конкретную задачу
+      и&nbsp;интерьер.
+    </p>
+
+  </div>
+
+
+
+  <div class="service reveal">
+
+    <div class="service-number">
+      02
+    </div>
+
+    <h3>
+      Граффити / аэрография
+    </h3>
+
+    <p>
+      Смешанные техники:
+      от&nbsp;классического граффити
+      до&nbsp;детализированной аэрографии.
+    </p>
+
+  </div>
+
+
+
+  <div class="service reveal">
+
+    <div class="service-number">
+      03
+    </div>
+
+    <h3>
+      Работа под ключ
+    </h3>
+
+    <p>
+      Идея, эскиз, подбор материалов,
+      подготовка поверхности
+      и&nbsp;реализация проекта.
+    </p>
+
+  </div>
+
+
+
+  <div class="service reveal">
+
+    <div class="service-number">
+      04
+    </div>
+
+    <h3>
+      Мастер-классы
+    </h3>
+
+    <p>
+      Знакомство с&nbsp;культурой граффити
+      и&nbsp;создание собственной работы.
+      Для&nbsp;взрослых и&nbsp;детей.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================== -->
+
+<section class="about" id="about">
+
+
+  <div class="about-grid">
+
+    <div class="section-label">
+      03 / About
+    </div>
+
+
+    <div>
+
+      <h2 class="reveal">
+        НЕ&nbsp;ПРОСТО<br>
+        КРАСКА НА&nbsp;СТЕНЕ.
+      </h2>
+
+
+      <p class="about-text reveal">
+
+        Я&nbsp;глубоко погружён
+        в&nbsp;технологические процессы
+        нанесения краски, поэтому могу
+        подобрать подходящую технику
+        практически для&nbsp;любой поверхности.
+
+        Для&nbsp;меня важно не&nbsp;только
+        создать изображение, но&nbsp;и&nbsp;сделать
+        так, чтобы оно органично работало
+        внутри пространства.
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="facts reveal">
+
+
+    <div class="fact">
+
+      <span>
+        География
+      </span>
+
+      <strong>
+        Краснодар и&nbsp;край
+      </strong>
+
+    </div>
+
+
+    <div class="fact">
+
+      <span>
+        Техники
+      </span>
+
+      <strong>
+        Граффити + аэрография
+      </strong>
+
+    </div>
+
+
+    <div class="fact">
+
+      <span>
+        Формат
+      </span>
+
+      <strong>
+        Работа под&nbsp;ключ
+      </strong>
+
+    </div>
+
+
+    <div class="fact">
+
+      <span>
+        Проекты
+      </span>
+
+      <strong>
+        Частные + коммерческие
+      </strong>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     PROTECTION
+========================== -->
+
+<section class="protection">
+
+
+  <div>
+
+    <div class="section-label">
+      04 / Technology
+    </div>
+
+
+    <h2 class="reveal">
+
+      РАБОТА ДОЛЖНА
+      ОСТАВАТЬСЯ ТАКОЙ,
+      КАКОЙ БЫЛА
+      В&nbsp;ПЕРВЫЙ ДЕНЬ.
+
+    </h2>
+
+  </div>
+
+
+
+  <div class="protection-copy reveal">
+
+
+    <p>
+
+      Готовую работу можно дополнительно
+      покрыть специализированным защитным лаком.
+
+      Он&nbsp;помогает сохранить цвет
+      и&nbsp;защищает поверхность
+      от&nbsp;загрязнений, сколов
+      и&nbsp;выцветания.
+
+    </p>
+
+
+    <div class="tags">
+
+      <span>
+        Защита цвета
+      </span>
+
+      <span>
+        От&nbsp;загрязнений
+      </span>
+
+      <span>
+        От&nbsp;сколов
+      </span>
+
+      <span>
+        Долговечность
+      </span>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================== -->
+
+<section class="contact" id="contact">
+
+
+  <div class="section-label">
+    05 / Contact
+  </div>
+
+
+  <h2 class="reveal">
+
+    ЕСТЬ СТЕНА?<br>
+
+    <span>
+      ЕСТЬ ИДЕЯ?
+    </span><br>
+
+    СДЕЛАЕМ.
+
+  </h2>
+
+
+
+  <div class="contact-links reveal">
+
+
+    <a
+      href="https://t.me/rosksh"
+      target="_blank"
+      rel="noopener"
+    >
+      Telegram ↗
+    </a>
+
+
+    <a
+      href="https://vk.ru/designeonthewalls"
+      target="_blank"
+      rel="noopener"
+    >
+      VK ↗
+    </a>
+
+
+    <a href="tel:+79996384827">
+      +7&nbsp;999&nbsp;638-48-27
+    </a>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
 <footer>
 
-  <span>© РОСКШ / 2026</span>
+  <span>
+    © РОСКШ / 2026
+  </span>
 
   <span>
     Graffiti · Airbrush · Mural art · Krasnodar
@@ -1399,26 +1710,42 @@
 </footer>
 
 
+
+<!-- =========================
+     ANIMATION
+========================== -->
+
 <script>
 
   const observer = new IntersectionObserver(
     (entries) => {
+
       entries.forEach((entry) => {
+
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
         }
+
       });
+
     },
+
     {
-      threshold: 0.12
+      threshold: 0.1
     }
   );
 
-  document.querySelectorAll(".reveal").forEach((el) => {
-    observer.observe(el);
-  });
+
+  document
+    .querySelectorAll(".reveal")
+    .forEach((element) => {
+
+      observer.observe(element);
+
+    });
 
 </script>
+
 
 </body>
 </html>
