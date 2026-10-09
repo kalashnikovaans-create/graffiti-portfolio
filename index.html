@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>РОСКШ — граффити и роспись стен в Краснодаре</title>
+  <meta name="description" content="Граффити, художественная роспись стен, аэрография и оформление пространств в Краснодаре и Краснодарском крае. Художник РОСКШ.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0b0b0b;
+      color: #f5f5f2;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      padding: 28px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 30px;
+      font-size: 14px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.88) 0%,
+          rgba(0,0,0,.55) 45%,
+          rgba(0,0,0,.1) 100%
+        ),
+        url("photo_2026-09-29_11-46-26.jpg") center/cover no-repeat;
+    }
+
+    .hero-content {
+      padding-bottom: 90px;
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+      opacity: .75;
+    }
+
+    h1 {
+      font-size: clamp(58px, 10vw, 145px);
+      line-height: .82;
+      letter-spacing: -7px;
+      font-weight: 900;
+      margin-bottom: 30px;
+    }
+
+    .hero-text {
+      font-size: clamp(19px, 2vw, 27px);
+      max-width: 680px;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 17px 25px;
+      border-radius: 100px;
+      background: #f5f5f2;
+      color: #111;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,.45);
+    }
+
+    /* INTRO */
+
+    .intro {
+      padding: 130px 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+    }
+
+    .section-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: .5;
+    }
+
+    .big-text {
+      font-size: clamp(30px, 4vw, 55px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    /* PORTFOLIO */
+
+    .portfolio {
+      padding-bottom: 130px;
+    }
+
+    .portfolio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: clamp(42px, 7vw, 90px);
+      line-height: .95;
+      letter-spacing: -4px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .work {
+      overflow: hidden;
+      background: #161616;
+      min-height: 420px;
+    }
+
+    .work img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .work:hover img {
+      transform: scale(1.025);
+    }
+
+    .work:nth-child(1) {
+      grid-column: span 7;
+      height: 650px;
+    }
+
+    .work:nth-child(2) {
+      grid-column: span 5;
+      height: 650px;
+    }
+
+    .work:nth-child(3) {
+      grid-column: span 4;
+      height: 600px;
+    }
+
+    .work:nth-child(4) {
+      grid-column: span 8;
+      height: 600px;
+    }
+
+    .work:nth-child(5),
+    .work:nth-child(6),
+    .work:nth-child(7) {
+      grid-column: span 4;
+      height: 520px;
+    }
+
+    .work:nth-child(8) {
+      grid-column: span 12;
+      height: 700px;
+    }
+
+    /* SERVICES */
+
+    .services {
+      background: #f0efe9;
+      color: #111;
+      padding: 120px 0;
+    }
+
+    .services h2 {
+      margin-bottom: 70px;
+    }
+
+    .service {
+      display: grid;
+      grid-template-columns: 70px 1fr 1fr;
+      gap: 30px;
+      padding: 35px 0;
+      border-top: 1px solid #bbb;
+    }
+
+    .service:last-child {
+      border-bottom: 1px solid #bbb;
+    }
+
+    .service-number {
+      opacity: .45;
+    }
+
+    .service-title {
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 700;
+    }
+
+    .service-text {
+      font-size: 17px;
+      color: #444;
+      max-width: 520px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      padding: 130px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+    }
+
+    .about h2 {
+      margin-bottom: 40px;
+    }
+
+    .about-text {
+      font-size: 20px;
+      color: #c9c9c9;
+    }
+
+    .about-text p {
+      margin-bottom: 22px;
+    }
+
+    .facts {
+      display: grid;
+      gap: 15px;
+      align-content: start;
+    }
+
+    .fact {
+      border-top: 1px solid #333;
+      padding: 22px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .fact span:last-child {
+      color: #aaa;
+      text-align: right;
+    }
+
+    /* PROTECTION */
+
+    .protection {
+      padding: 100px 0;
+      background: #151515;
+    }
+
+    .protection-inner {
+      max-width: 850px;
+    }
+
+    .protection h3 {
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1;
+      letter-spacing: -2px;
+      margin: 20px 0 30px;
+    }
+
+    .protection p {
+      color: #bbb;
+      font-size: 19px;
+      max-width: 700px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0;
+    }
+
+    .contact h2 {
+      max-width: 1000px;
+      margin-bottom: 50px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-link {
+      border: 1px solid #444;
+      border-radius: 100px;
+      padding: 16px 24px;
+      transition: .2s;
+    }
+
+    .contact-link:hover {
+      background: white;
+      color: black;
+    }
+
+    footer {
+      border-top: 1px solid #292929;
+      padding: 30px 0;
+      color: #777;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 760px) {
+
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      header {
+        padding-top: 20px;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .hero {
+        min-height: 90vh;
+        background-position: 58% center;
+      }
+
+      .hero-content {
+        padding-bottom: 55px;
+      }
+
+      h1 {
+        letter-spacing: -4px;
+      }
+
+      .intro {
+        padding: 85px 0;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .gallery {
+        display: block;
+      }
+
+      .work,
+      .work:nth-child(n) {
+        width: 100%;
+        height: 520px;
+        min-height: 0;
+        margin-bottom: 12px;
+      }
+
+      .work:nth-child(7),
+      .work:nth-child(8) {
+        height: 380px;
+      }
+
+      .portfolio {
+        padding-bottom: 80px;
+      }
+
+      .services {
+        padding: 80px 0;
+      }
+
+      .services h2 {
+        margin-bottom: 45px;
+      }
+
+      .service {
+        grid-template-columns: 40px 1fr;
+      }
+
+      .service-text {
+        grid-column: 2;
+      }
+
+      .about {
+        padding: 85px 0;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .contact {
+        min-height: 70vh;
+        padding: 90px 0;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="#" class="logo">РОСКШ</a>
+
+      <div class="menu">
+        <a href="#works">Работы</a>
+        <a href="#services">Услуги</a>
+        <a href="#about">Обо мне</a>
+        <a href="#contact">Контакты</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          Граффити · аэрография · роспись пространств
+        </div>
+
+        <h1>РОСКШ</h1>
+
+        <p class="hero-text">
+          Художественная роспись стен и пространств.
+          От идеи и эскиза до готовой работы.
+          Краснодар и Краснодарский край.
+        </p>
+
+        <div class="buttons">
+          <a class="button" href="https://t.me/rosksh" target="_blank">
+            Обсудить проект
+          </a>
+
+          <a class="button button-outline" href="#works">
+            Смотреть работы
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="intro">
+    <div class="container intro-grid">
+
+      <div class="section-label">
+        Обо мне
+      </div>
+
+      <div class="big-text">
+        Привет, я Макс — граффити-художник и дизайнер пространств.
+        Работаю в смешанных техниках, сочетая аэрографию
+        и классическое граффити.
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="portfolio" id="works">
+    <div class="container">
+
+      <div class="portfolio-header">
+        <h2>Работы</h2>
+      </div>
+
+      <div class="gallery">
+
+        <div class="work">
+          <img src="photo_2026-09-29_11-46-26.jpg" alt="Роспись стены РОСКШ" loading="lazy">
+        </div>
+
+        <div class="work">
+          <img src="photo_2026-09-11_10-17-38.jpg" alt="Художественная роспись стены" loading="lazy">
+        </div>
+
+        <div class="work">
+          <img src="photo_2026-09-17_12-28-47.jpg" alt="Граффити в интерьере" loading="lazy">
+        </div>
+
+        <div class="work">
+          <img src="photo_2026-10-07_16-08-55.jpg" alt="Авторская роспись РОСКШ" loading="lazy">
+        </div>
+
+        <div class="work">
+          <img src="photo_2026-09-20_16-38-27.jpg" alt="Граффити портрет" loading="lazy">
+        </div>
+
+        <div class="work">
+          <img src="photo_2026-09-01_16-37-27.jpg" alt="Граффити оформление помещения" loading="lazy">
+        </div>
+
+        <div class="work">
+          <img src="photo_2026-05-29_14-36-50.jpg" alt="Роспись стены аэрографией" loading="lazy">
+        </div>
+
+        <div class="work">
+          <img src="photo_2026-05-05_23-56-04.jpg" alt="Оформление пространства граффити" loading="lazy">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="services" id="services">
+    <div class="container">
+
+      <div class="section-label">
+        Что я делаю
+      </div>
+
+      <h2>Услуги</h2>
+
+      <div class="service">
+        <div class="service-number">01</div>
+
+        <div class="service-title">
+          Роспись стен
+        </div>
+
+        <div class="service-text">
+          Интерьеры, коммерческие пространства, частные проекты
+          и крупные поверхности. Разрабатываю решение под пространство,
+          задачу и бюджет.
+        </div>
+      </div>
+
+
+      <div class="service">
+        <div class="service-number">02</div>
+
+        <div class="service-title">
+          Граффити и аэрография
+        </div>
+
+        <div class="service-text">
+          Работаю в смешанных техниках и глубоко погружён
+          в технологию нанесения материалов. Это позволяет работать
+          практически с любыми поверхностями.
+        </div>
+      </div>
+
+
+      <div class="service">
+        <div class="service-number">03</div>
+
+        <div class="service-title">
+          Работа под ключ
+        </div>
+
+        <div class="service-text">
+          Беру на себя весь процесс: обсуждение идеи, подготовку,
+          разработку решения, подбор материалов и реализацию.
+          Работаю по Краснодару и Краснодарскому краю.
+        </div>
+      </div>
+
+
+      <div class="service">
+        <div class="service-number">04</div>
+
+        <div class="service-title">
+          Мастер-классы
+        </div>
+
+        <div class="service-text">
+          Знакомлю с культурой граффити и помогаю создать
+          свою первую работу. Провожу мастер-классы
+          для взрослых и детей.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="about" id="about">
+    <div class="container about-grid">
+
+      <div>
+        <div class="section-label">РОСКШ</div>
+
+        <h2>Искусство для пространства</h2>
+
+        <div class="about-text">
+          <p>
+            Я не ограничиваюсь одним стилем и могу адаптировать
+            идею под конкретное пространство — от спокойной
+            интерьерной росписи до яркого граффити.
+          </p>
+
+          <p>
+            Важно не только то, как выглядит работа, но и то,
+            как она выполнена. Поэтому уделяю внимание подготовке
+            поверхности, материалам и технологии нанесения.
+          </p>
+        </div>
+      </div>
+
+      <div class="facts">
+
+        <div class="fact">
+          <span>География</span>
+          <span>Краснодар и край</span>
+        </div>
+
+        <div class="fact">
+          <span>Техники</span>
+          <span>Граффити + аэрография</span>
+        </div>
+
+        <div class="fact">
+          <span>Формат</span>
+          <span>Работа под ключ</span>
+        </div>
+
+        <div class="fact">
+          <span>Проекты</span>
+          <span>Частные и коммерческие</span>
+        </div>
+
+        <div class="fact">
+          <span>Дополнительно</span>
+          <span>Мастер-классы</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="protection">
+    <div class="container">
+
+      <div class="protection-inner">
+
+        <div class="section-label">
+          Долговечность
+        </div>
+
+        <h3>
+          Рисунок должен оставаться таким, каким был в первый день.
+        </h3>
+
+        <p>
+          По желанию покрываю готовую работу специализированным
+          защитным лаком. Он помогает защитить поверхность
+          от загрязнений, сколов и выцветания и дольше сохранить
+          первоначальный вид росписи.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="contact" id="contact">
+    <div class="container">
+
+      <div class="section-label">
+        Есть идея?
+      </div>
+
+      <h2>
+        Давайте сделаем её на стене.
+      </h2>
+
+      <div class="contact-links">
+
+        <a class="contact-link"
+           href="https://t.me/rosksh"
+           target="_blank">
+          Telegram
+        </a>
+
+        <a class="contact-link"
+           href="https://vk.ru/designeonthewalls"
+           target="_blank">
+          VK
+        </a>
+
+        <a class="contact-link"
+           href="tel:+79996384827">
+          +7 999 638-48-27
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<footer>
+  <div class="container footer-inner">
+    <span>© РОСКШ</span>
+    <span>Граффити и художественная роспись · Краснодар</span>
+  </div>
+</footer>
+
+</body>
+</html>
